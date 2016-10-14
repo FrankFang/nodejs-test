@@ -2,6 +2,7 @@ var http = require('http')
 var fs = require('fs')
 
 //console.log(Object.keys(http))
+var port = process.env.PORT || 8888;
 
 var server = http.createServer(function(request, response){
   if(request.url === '/'){
@@ -16,6 +17,6 @@ var server = http.createServer(function(request, response){
   }
 })
 
-server.listen(8888)
+server.listen(port)
 
 console.log('监听成功')
