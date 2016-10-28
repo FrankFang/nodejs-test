@@ -9,7 +9,7 @@ var server = http.createServer(function(request, response){
     response.writeHead(200)
     fs.readFile('index.html', function(error, content){
       htmlString = content.toString()
-      response.end(htmlString)
+      response.end('瞎改')
     })
   }else {
     response.writeHead(404)
