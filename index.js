@@ -5,16 +5,13 @@ var fs = require('fs')
 var port = process.env.PORT || 8888;
 
 var server = http.createServer(function(request, response){
-  if(request.url === '/'){
-    response.writeHead(200)
-    fs.readFile('index.html', function(error, content){
-      htmlString = content.toString()
-      response.end('<head><meta charset="utf-8"><head> 瞎改')
-    })
-  }else {
-    response.writeHead(404)
-    response.end()
+  if(request.url === '/1'){
+		response.end('<title>1</title><script src="/3.css"></script>你请求1干什么？我给你一个随机数'+Math.random())		
+	}else if(request.url === '/3.css'){
+    response.setHeader('Content-Type','application/javascript')
+		response.end('var a = 1; alert(a);')
   }
+
 })
 
 server.listen(port)
