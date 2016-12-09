@@ -9,7 +9,7 @@ var server = http.createServer(function(request, response){
 		
     response.end('<title>1</title><script src="/3.css"></script>你请求1干什么？我给你一个随机数'+Math.random())		
 		
-	}else if(request.url === '/3.css'){
+  }else if(request.url === '/3.css'){
 		
     response.setHeader('Content-Type','application/javascript')
     response.end('var a = 1; alert(a);')
@@ -19,5 +19,4 @@ var server = http.createServer(function(request, response){
 })
 
 server.listen(port)
-
-console.log('监听成功')
+console.log('监听 8888 成功')
