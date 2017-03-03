@@ -13,27 +13,10 @@ var server = http.createServer(function(request, response){
 
   //从这里开始看，上面不要看
 
-  switch(path){
-    case  '/index.html':
-      var htmlString = fs.readFileSync('./index.html')
-      response.setHeader('Content-Type','text/html')
-      response.end(htmlString)		
-      break
-    case '/style.css':
-      var cssString = fs.readFileSync('./style.css')
-      response.setHeader('Content-Type','text/css')
-      response.end(cssString)
-      break
-    case '/main.js':
-      var functionName = query.callback
-      response.end(functionName + '("my password is yyy")')
-      break
-    case '/data.json':
-      response.setHeader('Content-Type','application/json')
-      response.end('{"name":"frank","age":18}')
-    default:
-      response.end('404')
-      break
+  if(path === '/index.html'){
+    response.end('11111111')
+  }else{
+    response.end('404')
   }
 
   // 代码结束，下面不要看
