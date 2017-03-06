@@ -13,8 +13,22 @@ var server = http.createServer(function(request, response){
 
   //从这里开始看，上面不要看
 
-  if(path === '/index.html'){
-    response.end('11111111')
+  if(path === '/'){
+    var string = fs.readFileSync('./index.html')
+    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.end(string)
+  }if(path === '/style.css'){
+    var string = fs.readFileSync('./style.css')
+    response.setHeader('Content-Type', 'text/css')
+    response.end(string)
+  }if(path === '/print-style.css'){
+    var string = fs.readFileSync('./print-style.css')
+    response.setHeader('Content-Type', 'text/css')
+    response.end(string)
+  }if(path === '/main.js'){
+    var string = fs.readFileSync('./main.js')
+    response.setHeader('Content-Type', 'application/javascript')
+    response.end(string)
   }else{
     response.end('404')
   }
