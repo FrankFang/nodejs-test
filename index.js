@@ -1,6 +1,7 @@
 var http = require('http')
 var fs = require('fs')
 var url = require('url')
+var querystring = require("querystring");    //用于解析POST请求
 
 //console.log(Object.keys(http))
 var port = process.env.PORT || 8888;
@@ -10,13 +11,12 @@ var server = http.createServer(function (request, response) {
   var temp = url.parse(request.url, true)
   var path = temp.pathname
   var query = temp.query
-  var method = request.method
 
   //从这里开始看，上面不要看
 
-  console.log(method + ' ' + path)
+  console.log(request.method + ' ' + path)
 
-  if (method === 'GET') {
+  if (request.method === 'GET') {
     if (path === '/') {  // 如果用户请求的是 / 路径
       var string = fs.readFileSync('./index.html')  // 就读取 index.html 的内容
       response.setHeader('Content-Type', 'text/html;charset=utf-8')  // 设置响应头 Content-Type
@@ -35,6 +35,22 @@ var server = http.createServer(function (request, response) {
       response.end(string)
     } else {  // 如果上面都不是用户请求的路径
       response.end('404')
+    }
+  } else if (request.method === 'POST') {
+    if (path === '/') {
+      var payload = "";
+
+      request.addListener("data", function (chunk) {
+        payload += chunk;
+      })
+
+      //POST结束输出结果
+      request.addListener("end", function () {
+        var params = querystring.parse(payload);
+        console.log(params)
+        response.setHeader('Content-Type', 'text/html;charset=utf-8')  // 设置响应头 Content-Type
+        response.end('这是 POST 返回的页面');
+      })
     }
   }
 
