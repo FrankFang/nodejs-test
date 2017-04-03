@@ -10,6 +10,7 @@ var server = http.createServer(function(request, response){
   var temp = url.parse(request.url, true)
   var path = temp.pathname
   var query = temp.query
+  var method = request.method
 
   //从这里开始看，上面不要看
 
@@ -35,6 +36,7 @@ var server = http.createServer(function(request, response){
   }
 
   // 代码结束，下面不要看
+  console.log(method + ' ' + request.url)
 })
 
 server.listen(port)
