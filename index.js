@@ -40,4 +40,4 @@ var server = http.createServer(function(request, response){
 })
 
 server.listen(port)
-console.log('监听 ' + port + ' 成功')
+console.log('监听 ' + port + ' 成功，请用浏览器打开 http://localhost:' + port)
