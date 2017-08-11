@@ -15,15 +15,15 @@ var server = http.createServer(function(request, response){
   //从这里开始看，上面不要看
 
   if(path === '/'){  // 如果用户请求的是 / 路径
-    var string = fs.readFileSync('./index.html')  
+    var string = fs.readFileSync('./index.html', 'utf8')  
     response.setHeader('Content-Type', 'text/html;charset=utf-8')  
     response.end(string)   
   }else if(path === '/style.css'){   
-    var string = fs.readFileSync('./style.css')
+    var string = fs.readFileSync('./style.css', 'utf8')
     response.setHeader('Content-Type', 'text/css')
     response.end(string)
   }else if(path === '/main.js'){  
-    var string = fs.readFileSync('./main.js')
+    var string = fs.readFileSync('./main.js', 'utf8')
     response.setHeader('Content-Type', 'application/javascript')
     response.end(string)
   }else{  
