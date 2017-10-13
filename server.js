@@ -11,8 +11,10 @@ if(!port){
 var server = http.createServer(function(request, response){
   var parsedUrl = url.parse(request.url, true)
   var path = request.url 
+  var query = ''
+  if(path.indexOf('?') >= 0){ query = path.substring(path.indexOf('?')) }
   var pathNoQuery = parsedUrl.pathname
-  var query = parsedUrl.query
+  var queryObject = parsedUrl.query
   var method = request.method
 
   /******** 从这里开始看，上面不要看 ************/
