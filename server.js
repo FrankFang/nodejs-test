@@ -10,39 +10,28 @@ if(!port){
 
 var server = http.createServer(function(request, response){
   var parsedUrl = url.parse(request.url, true)
-  var path = request.url 
-  var query = ''
-  if(path.indexOf('?') >= 0){ query = path.substring(path.indexOf('?')) }
-  var pathNoQuery = parsedUrl.pathname
-  var queryObject = parsedUrl.query
+  var pathWithQuery = request.url 
+  var queryString = ''
+  if(pathWithQuery.indexOf('?') >= 0){ queryString = pathWithQuery.substring(pathWithQuery.indexOf('?')) }
+  var path = parsedUrl.pathname
+  var query = parsedUrl.query
   var method = request.method
 
   /******** 从这里开始看，上面不要看 ************/
 
+  console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
 
-
-
-
-
-
-
-
-
-
-
-
-  console.log('方方说：得到 HTTP 路径\n' + path)
-  console.log('方方说：查询字符串为\n' + query)
-  console.log('方方说：不含查询字符串的路径为\n' + pathNoQuery)
-
-
-
-
-
-
-
-
-
+  if(path === '/'){
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.write('哈哈哈')
+    response.end()
+  }else{
+    response.statusCode = 404
+    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.write('呜呜呜')
+    response.end()
+  }
 
   /******** 代码结束，下面不要看 ************/
 })
