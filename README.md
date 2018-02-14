@@ -11,7 +11,7 @@
 
 ## 添加路由
 
-1. 打开 server.js，添加 if else
+1. 编辑 server.js 文件，添加 if else
 2. 重新运行 node server.js 8888
 
 
