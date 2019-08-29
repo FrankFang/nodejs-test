@@ -28,7 +28,7 @@ var server = http.createServer(function(request, response){
     response.end()
   } else if(path === '/x'){
     response.statusCode = 200
-    response.setHeader('Content-Type', 'test/css;charset=utf-8')
+    response.setHeader('Content-Type', 'text/css;charset=utf-8')
     response.write(`body{color: red;}`)
     response.end()
   } else {
